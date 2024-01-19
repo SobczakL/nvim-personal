@@ -61,15 +61,10 @@ return require('packer').startup(function(use)
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
 
-    use {
-        'j-morano/buffer_manager.nvim',
-        requires = { { 'nvim-lua/plenary.nvim' } }
-    }
+    use { 'ojroques/nvim-hardline' }
 
-    use({
-        'rebelot/terminal.nvim',
-        config = function()
-            require("terminal").setup()
-        end
-    })
+    use {"akinsho/toggleterm.nvim", tag = '*', config = function()
+        require("toggleterm").setup()
+    end}
+
 end)

@@ -12,6 +12,14 @@ local mappings = {
     { 'n', '<C-k>',      '<C-w>k' },
     { 'n', '<C-l>',      '<C-w>l' },
 
+    -- NORMAL MODE: Buffer cycling
+    { 'n', '<leader>bn', ':bnext<CR>' },
+    { 'n', '<leader>bp', ':bprev<CR>' },
+    { 'n', '<leader>bf', ':bfirst<CR>' },
+    { 'n', '<leader>bl', ':blast<CR>' },
+    { 'n', '<leader>xc', ':bd<CR>' },
+    { 'n', '<leader>xa', ':bufdo bd<CR>' },
+
 
 
     -- VISUAL MODE
