@@ -3,7 +3,6 @@ vim.g.mapleader = " "
 local mappings = {
     -- NORMAL MODE
     { 'n', ';',          ':' },
-    { 'n', '<leader>pv', ':Ex<CR>' },
     { 'n', '<leader>n',  '<cmd> set nu! <CR>' },
     { 'n', '<leader>rn', '<cmd> set rnu! <CR>' },
 
