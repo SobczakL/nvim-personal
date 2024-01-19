@@ -16,6 +16,17 @@ local mappings = {
     ["q"] = { "<cmd>wqall!<CR>", "Quit" },
     ["w"] = { "<cmd>w!<CR>", "Save" },
     ["u"] = { "<cmd>UndotreeToggle<CR>", "Undo Tree" },
+    ["s"] = {
+        function()
+            local pattern = vim.fn.input("Search File: ")
+            vim.cmd(":vimgrep /" .. vim.fn.escape(pattern, "/") .. "/ %")
+            vim.cmd(":match Search /" .. vim.fn.escape(pattern, "/") .. "/")
+            vim.cmd("augroup SearchHighlights")
+            vim.cmd("autocmd CursorMoved * silent! call clearmatches()")
+            vim.cmd("augroup END")
+        end,
+        "Search File"
+    },
 
     -- COMMENTS
     -- only for name group

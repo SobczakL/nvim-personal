@@ -5,6 +5,8 @@ local mappings = {
     { 'n', ';',          ':' },
     { 'n', '<leader>n',  '<cmd> set nu! <CR>' },
     { 'n', '<leader>rn', '<cmd> set rnu! <CR>' },
+    { 'n', '<C-i>',      '<cmd>cnext<CR>' },
+    { 'n', '<C-o>',      '<cmd>cprev<CR>' },
 
     { 'n', '<C-h>',      '<C-w>h' },
     { 'n', '<C-j>',      '<C-w>j' },
