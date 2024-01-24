@@ -8,6 +8,11 @@ return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
 
     use {
+        '~/repos/git_cmd.nvim',
+        requires = { 'nvim-lua/plenary.nvim' }
+    }
+
+    use {
         'nvim-telescope/telescope.nvim', tag = '0.1.5',
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
@@ -66,6 +71,11 @@ return require('packer').startup(function(use)
     use { "akinsho/toggleterm.nvim", tag = '*', config = function()
         require("toggleterm").setup()
     end }
+
+    use {
+        'akinsho/bufferline.nvim',
+        dependencies = 'nvim-tree/nvim-web-devicons'
+    }
 
     use {
         "folke/which-key.nvim",

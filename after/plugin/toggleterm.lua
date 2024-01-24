@@ -1,3 +1,8 @@
+local status_ok, toggleterm = pcall(require, "toggleterm")
+if not status_ok then
+    return
+end
+
 require("toggleterm").setup {
     size = 20,
     open_mapping = [[<c-t>]],
@@ -10,7 +15,7 @@ require("toggleterm").setup {
     persist_size = false,
     direction = "float",
     close_on_exit = true, -- close the terminal window when the process exits
-    shell = nil,          -- change the default shell
+    shell = vim.o.shell,  -- change the default shell
     float_opts = {
         border = "rounded",
         winblend = 0,
@@ -40,3 +45,22 @@ end
 
 -- if you only want these mappings for toggle term use term://*toggleterm#* instead
 vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
+
+local Terminal = require("toggleterm.terminal").Terminal
+local lazygit = Terminal:new({ cmd = "lazygit", hidden = true })
+
+function _LAZYGIT_TOGGLE()
+    lazygit:toggle()
+end
+
+local node = Terminal:new({ cmd = "node", hidden = true })
+
+function _NODE_TOGGLE()
+    node:toggle()
+end
+
+local python = Terminal:new({ cmd = "python3", hidden = true })
+
+function _PYTHON_TOGGLE()
+    python:toggle()
+end

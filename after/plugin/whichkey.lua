@@ -59,8 +59,6 @@ local mappings = {
     ["b"] = {
         name = "Buffer",
         ["b"] = { "<cmd>enew<cr>", "New Buffer" },
-        ["n"] = { "<cmd>bnext<cr>", "Next Buffer" },
-        ["p"] = { "<cmd>bprev<cr>", "Previous Buffer" },
         ["f"] = { "<cmd>bfirst<cr>", "First Buffer" },
         ["l"] = { "<cmd>blast<cr>", "Last Buffer" },
         ["k"] = { "<cmd>bd<cr>", "Kill Buffer" },
@@ -71,11 +69,11 @@ local mappings = {
     ["t"] = {
         name = "Toggle Term Maps",
         ["."] = { "", "<C-t> Toggle Term" },
-        -- [","] = { "", "<C-h> Window Left" },
-        -- ["/"] = { "", "<C-t> Toggle Term" },
-        -- ["."] = { "", "<C-t> Toggle Term" }
-        -- ["."] = { "", "<C-t> Toggle Term" }
-        -- ["."] = { "", "<C-t> Toggle Term" }
+        ["n"] = { "<cmd>lua _NODE_TOGGLE()<cr>", "Node" },
+        ["p"] = { "<cmd>lua _PYTHON_TOGGLE()<cr>", "Python" },
+        ["f"] = { "<cmd>ToggleTerm direction=float<cr>", "Float" },
+        ["h"] = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Horizontal" },
+        ["v"] = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical" },
     }
 }
 
