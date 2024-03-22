@@ -54,6 +54,9 @@ return require('packer').startup(function(use)
         }
     }
 
+    use('romgrk/barbar.nvim')
+    use('lewis6991/gitsigns.nvim')
+
     use({
         "stevearc/conform.nvim",
         config = function()
@@ -73,10 +76,6 @@ return require('packer').startup(function(use)
     use {
         'nvim-lualine/lualine.nvim',
         dependencies = { 'nvim-tree/nvim-web-devicons' }
-    }
-    use {
-        'akinsho/bufferline.nvim',
-        dependencies = 'nvim-tree/nvim-web-devicons'
     }
 
     use {
