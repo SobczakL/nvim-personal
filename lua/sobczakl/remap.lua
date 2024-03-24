@@ -14,10 +14,14 @@ local mappings = {
     { 'n', '<C-l>',      '<C-w>l' },
 
     -- NORMAL MODE: Buffer cycling
-    { 'n', '<tab>', ':bnext<CR>' },
-    { 'n', '<s-tab>', ':bprev<CR>' },
-
-
+    { 'n', '<tab>',      ':bnext<CR>' },
+    { 'n', '<S-tab>',    ':bprev<CR>' },
+    { 'n', '<leader>bd', ':bd<CR>' },
+    { 'n', '<leader>bx', ':bd!<CR>' },
+    { 'n', '<leader>bl', ':ls<CR>' },
+    { 'n', '<leader>bf', ':b <partial><CR>' },
+    { 'n', '<leader>bh', ':split<CR>' },
+    { 'n', '<leader>bv', ':vsplit<CR>' },
 
     -- VISUAL MODE
     { "v", "J",          ":m '>+1<CR>gv=gv" },

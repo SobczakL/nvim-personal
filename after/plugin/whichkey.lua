@@ -65,21 +65,6 @@ local mappings = {
         ["h"] = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Horizontal" },
         ["v"] = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical" },
     },
-
-    -- Barbar Tabs
-    ["b"] = {
-        name = "Buffer",
-        ["n"] = { "<Cmd>BufferNext<CR>", "Next Buffer" },
-        ["p"] = { "<Cmd>BufferPrevious<CR>", "Previous Buffer" },
-        ["mp"] = { "<Cmd>BufferMovePrevious<CR>", "Move Previous Buffer" },
-        ["mn"] = { "<Cmd>BufferMoveNext<CR>", "Move Next Buffer" },
-        ["y"] = { "<Cmd>BufferPin<CR>", "Pin Buffer" },
-        ["q"] = { "<Cmd>BufferPick<CR>", "Pick Buffer" },
-        ["sn"] = { "<Cmd>BufferOrderByBufferNumber<CR>", "Sort Buffer by Number" },
-        ["sd"] = { "<Cmd>BufferOrderByBufferDirectory<CR>", "Sort Buffer by Directory" },
-        ["sl"] = { "<Cmd>BufferOrderByBufferLanguage<CR>", "Sort Buffer by Language" },
-        ["sw"] = { "<Cmd>BufferOrderByBufferWindow<CR>", "Sort Buffer by Window" },
-    }
 }
 
 wk.register(mappings, opts)

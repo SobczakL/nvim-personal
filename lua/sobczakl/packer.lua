@@ -17,7 +17,13 @@ return require('packer').startup(function(use)
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
 
-    use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
+    use {
+        'nvim-treesitter/nvim-treesitter',
+        run = function()
+            local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+            ts_update()
+        end,
+    }
 
     use({
         'rose-pine/neovim',
@@ -54,7 +60,12 @@ return require('packer').startup(function(use)
         }
     }
 
-    use('romgrk/barbar.nvim')
+    use {
+        'akinsho/bufferline.nvim',
+        tag = "*",
+        requires = 'nvim-tree/nvim-web-devicons'
+    }
+
     use('lewis6991/gitsigns.nvim')
 
     use({
