@@ -8,11 +8,6 @@ return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
 
     use {
-        '~/repos/git_cmd.nvim',
-        requires = { 'nvim-lua/plenary.nvim' }
-    }
-
-    use {
         'nvim-telescope/telescope.nvim', tag = '0.1.5',
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
@@ -24,6 +19,25 @@ return require('packer').startup(function(use)
             ts_update()
         end,
     }
+
+    use({
+        "folke/which-key.nvim",
+        event = "VeryLazy",
+        opts = {
+            -- your configuration comes here
+            -- or leave it empty to use the default settings
+            -- refer to the configuration section below
+        },
+        keys = {
+            {
+                "<leader>?",
+                function()
+                    require("which-key").show({ global = false })
+                end,
+                desc = "Buffer Local Keymaps (which-key)",
+            },
+        },
+    })
 
     use({
         'rose-pine/neovim',
@@ -87,18 +101,5 @@ return require('packer').startup(function(use)
     use {
         'nvim-lualine/lualine.nvim',
         dependencies = { 'nvim-tree/nvim-web-devicons' }
-    }
-
-    use {
-        "folke/which-key.nvim",
-        config = function()
-            vim.o.timeout = true
-            vim.o.timeoutlen = 300
-            require("which-key").setup {
-                -- your configuration comes here
-                -- or leave it empty to use the default settings
-                -- refer to the configuration section below
-            }
-        end
     }
 end)
