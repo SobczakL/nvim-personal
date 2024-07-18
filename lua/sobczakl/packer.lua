@@ -8,8 +8,9 @@ return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
 
     use {
-        'nvim-telescope/telescope.nvim', tag = '0.1.5',
-        requires = { { 'nvim-lua/plenary.nvim' } }
+      'nvim-telescope/telescope.nvim', tag = '0.1.8',
+    -- or                            , branch = '0.1.x',
+      requires = { {'nvim-lua/plenary.nvim'} }
     }
 
     use {
@@ -19,25 +20,6 @@ return require('packer').startup(function(use)
             ts_update()
         end,
     }
-
-    use({
-        "folke/which-key.nvim",
-        event = "VeryLazy",
-        opts = {
-            -- your configuration comes here
-            -- or leave it empty to use the default settings
-            -- refer to the configuration section below
-        },
-        keys = {
-            {
-                "<leader>?",
-                function()
-                    require("which-key").show({ global = false })
-                end,
-                desc = "Buffer Local Keymaps (which-key)",
-            },
-        },
-    })
 
     use({
         'rose-pine/neovim',
