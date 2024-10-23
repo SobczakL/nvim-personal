@@ -11,9 +11,8 @@ return {
         require('telescope').setup({})
 
         local builtin = require('telescope.builtin')
-
         --Parent group set
-        vim.keymap.set('n', '<leader>f','', { desc = "Find Group" })
+        vim.keymap.set('n', '<leader>f', '', { desc = "Find Group" })
 
         -- Find files using Telescope
         vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = "Find files" })
@@ -42,6 +41,5 @@ return {
             local word = vim.fn.expand("<cWORD>")
             builtin.grep_string({ search = word })
         end, { desc = "Grep current WORD" })
-
     end
 }
