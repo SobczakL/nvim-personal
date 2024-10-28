@@ -33,8 +33,8 @@ vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeFocus<CR>", { desc = "Focus NvimT
 -- Buffer navigation and management
 vim.keymap.set("n", "<leader>b", "", { desc = "Buffers Group" })
 vim.keymap.set("n", "<leader>bl", "<cmd>:ls<CR>", { desc = "List buffers" })
-vim.keymap.set("n", "<tab>", "<cmd>:bn<CR>", { desc = "Next buffer" })
-vim.keymap.set("n", "<S-tab>", "<cmd>:bp<CR>", { desc = "Previous buffer" })
+vim.keymap.set("n", "<tab>", "<cmd>:bn<CR>", { noremap = true, silent = true, desc = "Next buffer" })
+vim.keymap.set("n", "<S-tab>", "<cmd>:bp<CR>", { noremap = true, silent = true, desc = "Previous buffer" })
 vim.keymap.set("n", "<leader>bd", "<cmd>:bd<CR>", { desc = "Delete buffer" })
 vim.keymap.set("n", "<leader>bx", "<cmd>:bd!<CR>", { desc = "Force delete buffer" })
 vim.keymap.set("n", "<leader>bh", "<cmd>:split<CR>", { desc = "Horizontal split" })
@@ -53,9 +53,9 @@ vim.keymap.set("n", "<S-k>", "<cmd>cnext<CR>zz", { desc = "Next quickfix item" }
 vim.keymap.set("n", "<S-j>", "<cmd>cprev<CR>zz", { desc = "Previous quickfix item" })
 vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz", { desc = "Next location list item" })
 vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz", { desc = "Previous location list item" })
-vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "Substitute word under cursor" })
+vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
+    { desc = "Substitute word under cursor" })
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { desc = "Make file executable", silent = true })
 vim.keymap.set("n", "<leader><leader>", function()
     vim.cmd("so")
 end, { desc = "Source file" })
-
