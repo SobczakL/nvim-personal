@@ -28,6 +28,14 @@ return {
             ensure_installed = {
                 "lua_ls",
                 "rust_analyzer",
+                "html",
+                "ts_ls",
+                "eslint",
+                "cssls",
+                "sqlls",
+                "jsonls",
+                "tailwindcss",
+                "clangd",
             },
             handlers = {
                 function(server_name) -- default handler (optional)
@@ -80,7 +88,7 @@ return {
             mapping = cmp.mapping.preset.insert({
                 ['<C-k>'] = cmp.mapping.select_prev_item(cmp_select),
                 ['<C-j>'] = cmp.mapping.select_next_item(cmp_select),
-                ['<tab>'] = cmp.mapping.confirm({ select = true }),
+                ['<Enter>'] = cmp.mapping.confirm({ select = true }),
                 ["<C-Space>"] = cmp.mapping.complete(),
             }),
             sources = cmp.config.sources({
