@@ -10,7 +10,7 @@ return {
         toggleterm.setup {
             size = 20,
             open_mapping = [[<c-t>]],
-            hide_numbers = true,
+           hide_numbers = true,
             shade_filetypes = {},
             shade_terminals = true,
             shading_factor = 2,
@@ -28,7 +28,6 @@ return {
                     background = "Normal",
                 },
             },
-            -- Removed winbar section to prevent related errors
         }
 
         -- Set terminal key mappings
