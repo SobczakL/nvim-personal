@@ -10,11 +10,11 @@ return {
         toggleterm.setup {
             size = 20,
             open_mapping = [[<c-t>]],
-           hide_numbers = true,
+            hide_numbers = true,
             shade_filetypes = {},
             shade_terminals = true,
             shading_factor = 2,
-            start_in_insert = true,
+            start_in_insert = false,
             insert_mappings = true,
             persist_size = true,
             direction = "float",
@@ -29,7 +29,6 @@ return {
                 },
             },
         }
-
         -- Set terminal key mappings
         function _G.set_terminal_keymaps()
             local opts = { buffer = 0 }
@@ -40,61 +39,49 @@ return {
             vim.keymap.set('t', '<C-k>', [[<Cmd>wincmd k<CR>]], opts)
             vim.keymap.set('t', '<C-l>', [[<Cmd>wincmd l<CR>]], opts)
             vim.keymap.set('t', '<C-w>', [[<C-\><C-n><C-w>]], opts)
-            vim.keymap.set('t', '<C-Up>', [[<Cmd>resize +2<CR>]], opts)
-            vim.keymap.set('t', '<C-Down>', [[<Cmd>resize -2<CR>]], opts)
-            vim.keymap.set('t', '<C-Left>', [[<Cmd>vertical resize -2<CR>]], opts)
-            vim.keymap.set('t', '<C-Right>', [[<Cmd>vertical resize +2<CR>]], opts)
+            vim.keymap.set('t', '<S-Up>', [[<Cmd>resize +5<CR>]], opts)
+            vim.keymap.set('t', '<S-Down>', [[<Cmd>resize -5<CR>]], opts)
+            vim.keymap.set('t', '<S-Left>', [[<Cmd>vertical resize -5<CR>]], opts)
+            vim.keymap.set('t', '<S-Right>', [[<Cmd>vertical resize +5<CR>]], opts)
         end
 
         vim.cmd('autocmd! TermOpen term://*toggleterm#* lua set_terminal_keymaps()')
 
         local Terminal = require("toggleterm.terminal").Terminal
 
-        -- Lazygit terminal
-        local lazygit = Terminal:new({
-            cmd = "lazygit",
-            hidden = true,
-            direction = "float",
-            float_opts = {
-                border = "rounded",
-            },
+        -- Define a Tab Terminal
+        local tab_term = Terminal:new({
+            direction = "tab",
+            persist_size = true,
         })
 
-        function _LAZYGIT_TOGGLE()
-            lazygit:toggle()
+        function _TAB_TERM_TOGGLE()
+            tab_term:toggle()
         end
 
-        -- Python REPL terminal
-        local python = Terminal:new({
-            cmd = "python",
-            hidden = true,
-            direction = "horizontal",
-        })
-
-        function _PYTHON_TOGGLE()
-            python:toggle()
-        end
-
-        -- Node.js REPL terminal
-        local node = Terminal:new({
-            cmd = "node",
-            hidden = true,
-            direction = "horizontal",
-        })
-
-        function _NODE_TOGGLE()
-            node:toggle()
-        end
-
-        -- Vertical and Horizontal Terminals
+        -- Vertical and Horizontal Terminals with fixed sizes
         local vertical_term = Terminal:new({
             direction = "vertical",
-            size = vim.o.columns * 0.4,
+            size = 80,
+            persist_size = true,
+            on_open = function(term)
+                vim.cmd("setlocal winfixwidth")
+            end,
+            on_close = function(term)
+                vim.cmd("setlocal nowinfixwidth")
+            end,
         })
 
         local horizontal_term = Terminal:new({
             direction = "horizontal",
             size = 15,
+            persist_size = true,
+            on_open = function(term)
+                vim.cmd("setlocal winfixheight")
+            end,
+            on_close = function(term)
+                vim.cmd("setlocal nowinfixheight")
+            end,
         })
 
         function _VERTICAL_TERM_TOGGLE()
@@ -106,6 +93,7 @@ return {
         end
 
         -- Key mappings to toggle terminals
+        vim.api.nvim_set_keymap("n", "<leader>tt", "<cmd>lua _TAB_TERM_TOGGLE()<CR>", { noremap = true, silent = true })
         vim.api.nvim_set_keymap("n", "<leader>tl", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", { noremap = true, silent = true })
         vim.api.nvim_set_keymap("n", "<leader>tp", "<cmd>lua _PYTHON_TOGGLE()<CR>", { noremap = true, silent = true })
         vim.api.nvim_set_keymap("n", "<leader>tn", "<cmd>lua _NODE_TOGGLE()<CR>", { noremap = true, silent = true })
