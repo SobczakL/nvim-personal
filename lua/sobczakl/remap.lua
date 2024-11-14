@@ -39,6 +39,10 @@ vim.keymap.set("n", "<leader>bd", "<cmd>:bd<CR>", { desc = "Delete buffer" })
 vim.keymap.set("n", "<leader>bx", "<cmd>:bd!<CR>", { desc = "Force delete buffer" })
 vim.keymap.set("n", "<leader>bh", "<cmd>:split<CR>", { desc = "Horizontal split" })
 vim.keymap.set("n", "<leader>bv", "<cmd>:vsplit<CR>", { desc = "Vertical split" })
+vim.keymap.set('n', '<S-Down>', [[<Cmd>resize +5<CR>]], opts)
+vim.keymap.set('n', '<S-Up>', [[<Cmd>resize -5<CR>]], opts)
+vim.keymap.set('n', '<S-Right>', [[<Cmd>vertical resize -5<CR>]], opts)
+vim.keymap.set('n', '<S-Left>', [[<Cmd>vertical resize +5<CR>]], opts)
 
 -- Clipboard operations
 vim.keymap.set("x", "<leader>p", [["_dP]], { desc = "Paste and keep clipboard content" })
