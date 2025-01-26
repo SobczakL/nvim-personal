@@ -28,12 +28,12 @@ return {
             require("mason-lspconfig").setup({
                 ensure_installed = {
                     "lua_ls",
-                    "rust_analyzer",
                     "html",
                     "ts_ls",
                     "eslint",
                     "cssls",
                     "tailwindcss",
+                    "gopls",
                 },
                 handlers = {
                     function(server_name)
